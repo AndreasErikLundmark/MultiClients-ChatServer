@@ -1,4 +1,4 @@
-# Java Multi-Client Chat Server with JavaFX GUI
+# Java Multi-Client Chat Server
 
 This project consists of a **Java chat server** capable of handling multiple clients, built using **Java threads** and **sockets**. The server features a simple **JavaFX GUI** for easy interaction and management, while the client is run in the console, more for demonstration purpose.
 
