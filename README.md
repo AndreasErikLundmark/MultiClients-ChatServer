@@ -48,3 +48,18 @@ To start the client, navigate to the `src/` directory and run:
 - Connects to the chat server and sends/receives messages.
 - The client can be launched with a default or custom port depending on the server configuration.
 
+## Tips for Creating a Fat Jar Including JavaFX on the Server Side 
+
+1. **Good read**: [How to Deploy Your JavaFX Application the Easy Way](https://medium.com/@PoulLorca/how-to-deploy-your-javafx-application-the-easy-way-51ce105700a4)
+2. **Use Liberica Full JDK** that includes JavaFX: [Liberica Full JDK](https://bell-sw.com/pages/downloads/#jdk-21-lts)
+3. In IntelliJ, create a new artifact under "Project Structure". Choose to add a new Jar with “from modules with dependencies…”
+4. To create a new jar:
+    ```bash
+    mvn clean package
+    ```
+5. The `manifest.mf` specifies the Server (launch class).
+6. Maven creates new jars under the `target` directory. They should include JavaFX the way things are set up in the server build.
+
+
+   
+
