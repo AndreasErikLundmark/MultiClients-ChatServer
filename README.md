@@ -2,6 +2,9 @@
 
 This project consists of a **Java chat server** capable of handling multiple clients, built using **Java threads** and **sockets**. The server features a simple **JavaFX GUI** for easy interaction and management, while the client is run in the console, more for demonstration purpose.
 
+<img width="805" alt="Chat-Server" src="https://github.com/user-attachments/assets/e825666a-82e7-4afa-b31e-53fd595d464b" />
+
+
 ## Server Setup
 
 ### 1. Run the Server
