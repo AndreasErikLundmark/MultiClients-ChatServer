@@ -1,3 +1,5 @@
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class SendChatThread extends Thread {
@@ -29,15 +31,25 @@ public class SendChatThread extends Thread {
     }
 
     public void stopThis() {
+
+
+        messageSender.close();
         this.stop = true;
+        scanner.close();
     }
 
     @Override
     public void run() {
+        System.out.print("New Message: ");
         while (running()) {
             try {
-                System.out.print("New Message: ");
-                String messageNew = scanner.nextLine();
+                String messageNew = "";
+                if(terminateChat.isStopped()){
+                
+                }
+//                System.out.print("New Message: ");
+                messageNew = scanner.nextLine();
+                clearConsole();/////////////////////////////////
 
                 if (messageNew.equals("exit")) {
                     terminateChat.execute();
@@ -61,7 +73,7 @@ public class SendChatThread extends Thread {
                         Thread.sleep(sleepMillis);
                         setMessage(null);
                         setSendMessage(false);
-                        System.out.flush();
+
                     }
                 }
             } catch (InterruptedException e) {
@@ -70,7 +82,6 @@ public class SendChatThread extends Thread {
             } finally {
                 if (terminateChat.isStopped()) {
                     stopThis();
-
                 }
             }
         }
@@ -101,5 +112,9 @@ public class SendChatThread extends Thread {
             throw new IllegalArgumentException("MessageSender can not be null");
         }
         return true;
+    }
+
+    public static void clearConsole() {
+        for (int i = 0; i < 50; ++i) System.out.println();
     }
 }

@@ -28,16 +28,17 @@ public class Client {
         } else {
             messageSender = new MessageSender(host, port);
         }
+        TerminateChat terminateChat = new TerminateChat();
 
-        MessageReciever messageReciever = new MessageReciever(messageSender);
+        MessageReciever messageReciever = new MessageReciever(messageSender, terminateChat);
 
         Scanner scanner = new Scanner(System.in);
 
         SendChatThread sendChatThread = new SendChatThread(messageSender, scanner);
 
-        RecieveChatThread recieveChatThread = new RecieveChatThread(messageReciever);
+        RecieveChatThread recieveChatThread = new RecieveChatThread(messageReciever, scanner);
 
-        TerminateChat terminateChat = new TerminateChat();
+
 
         sendChatThread.setTerminateChat(terminateChat);
         recieveChatThread.setTerminateChat(terminateChat);

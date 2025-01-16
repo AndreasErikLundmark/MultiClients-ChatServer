@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class RecieveChatThread extends Thread {
 
 
@@ -11,9 +13,12 @@ public class RecieveChatThread extends Thread {
 
     private TerminateChat terminateChat = null;
 
-    public RecieveChatThread(MessageReciever messagerReciever) {
+    private Scanner scanner;
+
+    public RecieveChatThread(MessageReciever messagerReciever, Scanner scanner) {
         validateMessageReciever(messagerReciever);
         this.messageReciever = messagerReciever;
+        this.scanner = scanner;
     }
 
     private synchronized boolean running() {
@@ -40,15 +45,15 @@ public class RecieveChatThread extends Thread {
                     break;
                 }
 
-
+                // Listening for new messages and adds them to the messageQue
                 messageReciever.getMessage();
 
                 if (!terminateChat.isStopped()) {
-
+                    clearConsole();
                     System.out.println(messageReciever.printHeader());
-                    System.out.println(messageReciever.printChat());
-                    System.out.print("\n");
-                    System.out.flush();
+                    System.out.println(messageReciever.printChat()); ////////  need a scanner here:
+                    getNextLine();
+//                    System.out.flush();
                 }
                 Thread.sleep(sleepMillis);
             } catch (InterruptedException e) {
@@ -66,6 +71,12 @@ public class RecieveChatThread extends Thread {
         }
     }
 
+    private void getNextLine(){
+        System.out.print("\n");
+        System.out.print("New Message: ");
+
+    }
+
     /**
      * Sets the length in between every print done by run.
      *
@@ -81,6 +92,9 @@ public class RecieveChatThread extends Thread {
             throw new IllegalArgumentException("MessageReciever can not be null");
         }
         return true;
+    }
+    private void clearConsole() {
+        for (int i = 0; i < 50; ++i) System.out.println();
     }
 
     public void setTerminateChat(TerminateChat terminateChat) {
