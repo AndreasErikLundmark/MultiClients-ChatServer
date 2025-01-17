@@ -51,9 +51,8 @@ public class RecieveChatThread extends Thread {
                 if (!terminateChat.isStopped()) {
                     clearConsole();
                     System.out.println(messageReciever.printHeader());
-                    System.out.println(messageReciever.printChat()); ////////  need a scanner here:
-                    getNextLine();
-//                    System.out.flush();
+                    System.out.println(messageReciever.printChat());
+                    getNextLine("New Message: ");
                 }
                 Thread.sleep(sleepMillis);
             } catch (InterruptedException e) {
@@ -64,6 +63,7 @@ public class RecieveChatThread extends Thread {
             } finally {
                 if (terminateChat.isStopped()) {
                     System.out.println("Chat receiver stopped");
+                    getNextLine("Type 'exit' to stop chat: ");
                     messageReciever.close();
                     stopThis();
                 }
@@ -71,10 +71,9 @@ public class RecieveChatThread extends Thread {
         }
     }
 
-    private void getNextLine(){
+    private void getNextLine(String messageToUser) {
         System.out.print("\n");
-        System.out.print("New Message: ");
-
+        System.out.print(messageToUser);
     }
 
     /**

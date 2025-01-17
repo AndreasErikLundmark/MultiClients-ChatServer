@@ -45,7 +45,7 @@ public class MessageReciever {
         String result = "";
         try {
             result = in.readLine();
-            if (result==null||result.isEmpty()){
+            if (result==null||result.equals("SERVER OFFLINE")){
                 lostConnectionHandler();
                 return "exit";
             }
