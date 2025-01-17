@@ -37,11 +37,15 @@ To start the client, navigate to the `src/` directory and run:
     ```bash
     java Client
     ```
-
-- **Custom Port:**
-    To connect the client to a server running on a custom port, provide the custom port number:
+- **Custom Host:**
+    Default host is 'localhost'. To connect the client to a server running on a custom host, provide the custom host adress:
     ```bash
-    java Client <customport>
+    java Client <host>
+    ```
+- **Custom Port:**
+    To connect the client to a server running on a custom port, provide the custom port number after providing host:
+    ```bash
+    java Client <host> <customport>
     ```
 
 ### 2. Client Features
