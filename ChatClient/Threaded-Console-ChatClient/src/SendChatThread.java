@@ -45,7 +45,7 @@ public class SendChatThread extends Thread {
             try {
                 String messageNew = "";
                 if(terminateChat.isStopped()){
-                
+
                 }
 //                System.out.print("New Message: ");
                 messageNew = scanner.nextLine();

@@ -94,9 +94,6 @@ public class MessageReciever {
         close();
         System.out.println("Connection lost");
     }
-//        clearConsole();
-//        StringBuilder sb = new StringBuilder("Connection lost");
-//        close();
 
 
 

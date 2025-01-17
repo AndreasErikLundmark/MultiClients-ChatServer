@@ -21,9 +21,9 @@ public class Client {
         int port = 2000;
         MessageSender messageSender;
 
-        if (args != null && args.length == 1) {
+        if (args.length == 1) {
             messageSender = new MessageSender(args[0], port);
-        } else if (args != null && args.length == 2) {
+        } else if ( args.length == 2) {
             messageSender = new MessageSender(args[0], Integer.parseInt(args[1]));
         } else {
             messageSender = new MessageSender(host, port);
